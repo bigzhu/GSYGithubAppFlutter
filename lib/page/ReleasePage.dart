@@ -31,11 +31,12 @@ class ReleasePage extends StatefulWidget {
   ReleasePage(this.userName, this.reposName, this.releaseUrl, this.tagUrl);
 
   @override
-  _ReleasePageState createState() => _ReleasePageState(this.userName, this.reposName, this.releaseUrl, this.tagUrl);
+  _ReleasePageState createState() => _ReleasePageState(
+      this.userName, this.reposName, this.releaseUrl, this.tagUrl);
 }
 
-
-class _ReleasePageState extends State<ReleasePage> with AutomaticKeepAliveClientMixin<ReleasePage>, GSYListState<ReleasePage> {
+class _ReleasePageState extends State<ReleasePage>
+    with AutomaticKeepAliveClientMixin<ReleasePage>, GSYListState<ReleasePage> {
   final String userName;
 
   final String reposName;
@@ -48,10 +49,12 @@ class _ReleasePageState extends State<ReleasePage> with AutomaticKeepAliveClient
 
   int selectIndex = 0;
 
-  _ReleasePageState(this.userName, this.reposName, this.releaseUrl, this.tagUrl);
+  _ReleasePageState(
+      this.userName, this.reposName, this.releaseUrl, this.tagUrl);
 
   _renderEventItem(index) {
-    ReleaseItemViewModel releaseItemViewModel = ReleaseItemViewModel.fromMap(pullLoadWidgetControl.dataList[index]);
+    ReleaseItemViewModel releaseItemViewModel =
+        ReleaseItemViewModel.fromMap(pullLoadWidgetControl.dataList[index]);
     return new ReleaseItem(
       releaseItemViewModel,
       onPressed: () {
@@ -62,11 +65,17 @@ class _ReleasePageState extends State<ReleasePage> with AutomaticKeepAliveClient
               title: releaseItemViewModel.actionTitle,
               userName: userName,
               reposName: reposName,
-              data: HtmlUtils.generateHtml(releaseItemViewModel.actionTargetHtml, backgroundColor: GSYColors.webDraculaBackgroundColorString),
+              data: HtmlUtils.generateHtml(
+                  releaseItemViewModel.actionTargetHtml,
+                  backgroundColor: GSYColors.webDraculaBackgroundColorString),
             );
           } else {
-            String html = HtmlUtils.generateHtml(releaseItemViewModel.actionTargetHtml, backgroundColor: GSYColors.miWhiteString, userBR: false);
-            CommonUtils.launchWebView(context, releaseItemViewModel.actionTitle, html);
+            String html = HtmlUtils.generateHtml(
+                releaseItemViewModel.actionTargetHtml,
+                backgroundColor: GSYColors.miWhiteString,
+                userBR: false);
+            CommonUtils.launchWebView(
+                context, releaseItemViewModel.actionTitle, html);
           }
         }
       },
@@ -81,7 +90,10 @@ class _ReleasePageState extends State<ReleasePage> with AutomaticKeepAliveClient
     if (await canLaunch(url)) {
       await launch(url);
     } else {
-      Fluttertoast.showToast(msg: CommonUtils.getLocale(context).option_web_launcher_error + ": " + url);
+      Fluttertoast.showToast(
+          msg: CommonUtils.getLocale(context).option_web_launcher_error +
+              ": " +
+              url);
     }
   }
 
@@ -95,7 +107,8 @@ class _ReleasePageState extends State<ReleasePage> with AutomaticKeepAliveClient
   }
 
   _getDataLogic() async {
-    return await ReposDao.getRepositoryReleaseDao(userName, reposName, page, needHtml: Platform.isAndroid, release: selectIndex == 0);
+    return await ReposDao.getRepositoryReleaseDao(userName, reposName, page,
+        needHtml: Platform.isAndroid, release: selectIndex == 0);
   }
 
   @override
@@ -123,7 +136,6 @@ class _ReleasePageState extends State<ReleasePage> with AutomaticKeepAliveClient
   @override
   Widget build(BuildContext context) {
     super.build(context); // See AutomaticKeepAliveClientMixin.
-    String url = _getUrl();
     return new Scaffold(
       backgroundColor: Color(GSYColors.mainBackgroundColor),
       appBar: new AppBar(

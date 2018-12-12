@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gsy_github_app_flutter/common/model/Repository.dart';
 import 'package:gsy_github_app_flutter/common/style/GSYStyle.dart';
-import 'package:gsy_github_app_flutter/common/utils/NavigatorUtils.dart';
-import 'package:gsy_github_app_flutter/widget/GSYCardItem.dart';
-import 'package:gsy_github_app_flutter/widget/GSYIConText.dart';
-import 'package:gsy_github_app_flutter/widget/GSYUserIconWidget.dart';
-
 
 class DemoItem extends StatelessWidget {
-
   DemoItem() : super();
 
   ///返回一个居中带图标和文本的Item
@@ -58,11 +51,15 @@ class DemoItem extends StatelessWidget {
     return new Container(
       ///卡片包装
       child: new Card(
-           ///增加点击效果
+
+          ///增加点击效果
           child: new FlatButton(
-              onPressed: (){print("点击了哦");},
+              onPressed: () {
+                print("点击了哦");
+              },
               child: new Padding(
-                padding: new EdgeInsets.only(left: 0.0, top: 10.0, right: 10.0, bottom: 10.0),
+                padding: new EdgeInsets.only(
+                    left: 0.0, top: 10.0, right: 10.0, bottom: 10.0),
                 child: new Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
@@ -74,6 +71,7 @@ class DemoItem extends StatelessWidget {
                             color: Color(GSYColors.subTextColor),
                             fontSize: 14.0,
                           ),
+
                           ///最长三行，超过 ... 显示
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,

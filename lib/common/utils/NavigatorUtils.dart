@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +17,7 @@ import 'package:gsy_github_app_flutter/page/ReleasePage.dart';
 import 'package:gsy_github_app_flutter/page/RepositoryDetailPage.dart';
 import 'package:gsy_github_app_flutter/page/SearchPage.dart';
 import 'package:gsy_github_app_flutter/page/UserProfilePage.dart';
+
 /**
  * 导航栏
  * Created by guoshuyu
@@ -46,16 +46,23 @@ class NavigatorUtils {
 
   ///个人中心
   static goPerson(BuildContext context, String userName) {
-    Navigator.push(context, new CupertinoPageRoute(builder: (context) => new PersonPage(userName)));
+    Navigator.push(context,
+        new CupertinoPageRoute(builder: (context) => new PersonPage(userName)));
   }
 
   ///仓库详情
-  static Future<Null> goReposDetail(BuildContext context, String userName, String reposName) {
-    return Navigator.push(context, new CupertinoPageRoute(builder: (context) => new RepositoryDetailPage(userName, reposName)));
+  static Future<Null> goReposDetail(
+      BuildContext context, String userName, String reposName) {
+    return Navigator.push(
+        context,
+        new CupertinoPageRoute(
+            builder: (context) =>
+                new RepositoryDetailPage(userName, reposName)));
   }
 
   ///仓库版本列表
-  static Future<Null> goReleasePage(BuildContext context, String userName, String reposName, String releaseUrl, String tagUrl) {
+  static Future<Null> goReleasePage(BuildContext context, String userName,
+      String reposName, String releaseUrl, String tagUrl) {
     return Navigator.push(
         context,
         new CupertinoPageRoute(
@@ -68,7 +75,9 @@ class NavigatorUtils {
   }
 
   ///issue详情
-  static Future<Null> goIssueDetail(BuildContext context, String userName, String reposName, String num, {bool needRightLocalIcon = false}) {
+  static Future<Null> goIssueDetail(
+      BuildContext context, String userName, String reposName, String num,
+      {bool needRightLocalIcon = false}) {
     return Navigator.push(
         context,
         new CupertinoPageRoute(
@@ -81,7 +90,9 @@ class NavigatorUtils {
   }
 
   ///通用列表
-  static gotoCommonList(BuildContext context, String title, String showType, String dataType, {String userName, String reposName}) {
+  static gotoCommonList(
+      BuildContext context, String title, String showType, String dataType,
+      {String userName, String reposName}) {
     Navigator.push(
         context,
         new CupertinoPageRoute(
@@ -96,7 +107,13 @@ class NavigatorUtils {
 
   ///文件代码详情
   static gotoCodeDetailPage(BuildContext context,
-      {String title, String userName, String reposName, String path, String data, String branch, String htmlUrl}) {
+      {String title,
+      String userName,
+      String reposName,
+      String path,
+      String data,
+      String branch,
+      String htmlUrl}) {
     Navigator.push(
         context,
         new CupertinoPageRoute(
@@ -113,16 +130,19 @@ class NavigatorUtils {
 
   ///仓库详情通知
   static Future<Null> goNotifyPage(BuildContext context) {
-    return Navigator.push(context, new CupertinoPageRoute(builder: (context) => new NotifyPage()));
+    return Navigator.push(context,
+        new CupertinoPageRoute(builder: (context) => new NotifyPage()));
   }
 
   ///搜索
   static Future<Null> goSearchPage(BuildContext context) {
-    return Navigator.push(context, new CupertinoPageRoute(builder: (context) => new SearchPage()));
+    return Navigator.push(context,
+        new CupertinoPageRoute(builder: (context) => new SearchPage()));
   }
 
   ///提交详情
-  static Future<Null> goPushDetailPage(BuildContext context, String userName, String reposName, String sha, bool needHomeIcon) {
+  static Future<Null> goPushDetailPage(BuildContext context, String userName,
+      String reposName, String sha, bool needHomeIcon) {
     return Navigator.push(
         context,
         new CupertinoPageRoute(
@@ -135,7 +155,8 @@ class NavigatorUtils {
   }
 
   ///全屏Web页面
-  static Future<Null> goGSYWebView(BuildContext context, String url, String title) {
+  static Future<Null> goGSYWebView(
+      BuildContext context, String url, String title) {
     return Navigator.push(
       context,
       new CupertinoPageRoute(
@@ -146,7 +167,13 @@ class NavigatorUtils {
 
   ///文件代码详情Web
   static gotoCodeDetailPageWeb(BuildContext context,
-      {String title, String userName, String reposName, String path, String data, String branch, String htmlUrl}) {
+      {String title,
+      String userName,
+      String reposName,
+      String path,
+      String data,
+      String branch,
+      String htmlUrl}) {
     Navigator.push(
         context,
         new CupertinoPageRoute(
@@ -163,7 +190,13 @@ class NavigatorUtils {
 
   ///根据平台跳转文件代码详情Web
   static gotoCodeDetailPlatform(BuildContext context,
-      {String title, String userName, String reposName, String path, String data, String branch, String htmlUrl}) {
+      {String title,
+      String userName,
+      String reposName,
+      String path,
+      String data,
+      String branch,
+      String htmlUrl}) {
     /*if (Platform.isIOS) {
       NavigatorUtils.gotoCodeDetailPage(
         context,
@@ -196,11 +229,13 @@ class NavigatorUtils {
 
   ///图片预览
   static gotoPhotoViewPage(BuildContext context, String url) {
-    Navigator.push(context, new CupertinoPageRoute(builder: (context) => new PhotoViewPage(url)));
+    Navigator.push(context,
+        new CupertinoPageRoute(builder: (context) => new PhotoViewPage(url)));
   }
 
   ///用户配置
   static gotoUserProfileInfo(BuildContext context) {
-    Navigator.push(context, new CupertinoPageRoute(builder: (context) => new UserProfileInfo()));
+    Navigator.push(context,
+        new CupertinoPageRoute(builder: (context) => new UserProfileInfo()));
   }
 }
